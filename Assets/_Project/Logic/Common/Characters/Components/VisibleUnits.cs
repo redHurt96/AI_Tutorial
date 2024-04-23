@@ -10,16 +10,16 @@ namespace _Project.Logic.Common.Characters.Components
     {
         [SerializeField, ReadOnly] private List<Unit> _units = new();
 
-        private void OnTriggerEnter(Collider other)
+        public void Add(Unit unit)
         {
-            if (other.TryGetComponent(out Unit unit))
-                Add(unit);
+            _units.Add(unit);
+            unit.Destroyed += Remove;
         }
 
-        private void OnTriggerExit(Collider other)
+        public void Remove(Unit unit)
         {
-            if (other.TryGetComponent(out Unit unit)) 
-                Remove(unit);
+            unit.Destroyed -= Remove;
+            _units.Remove(unit);
         }
 
         public bool HasAnyEnemy(Team team) => 
@@ -30,16 +30,5 @@ namespace _Project.Logic.Common.Characters.Components
             .OrderBy(x => Distance(x.transform.position, transform.position))
             .FirstOrDefault();
 
-        private void Add(Unit unit)
-        {
-            _units.Add(unit);
-            unit.Destroyed += Remove;
-        }
-
-        private void Remove(Unit unit)
-        {
-            unit.Destroyed -= Remove;
-            _units.Remove(unit);
-        }
     }
 }
