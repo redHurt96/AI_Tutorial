@@ -19,7 +19,7 @@ namespace _Project.Logic.Common.Characters.Components
 
         private void Clear(Unit target)
         {
-            target.Destroyed += Clear;
+            target.Destroyed -= Clear;
             Target = null;
         }
     }

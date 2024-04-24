@@ -7,11 +7,11 @@ namespace _Project.Logic.RuleBasedAI.Implementation
 {
     internal class RuleBasedAiFactory : IRuleBasedAiFactory
     {
-        private readonly IUnitFactory _unitFactory;
+        private readonly UnitFactory _unitFactory;
         private readonly IActorsRepository _actorsRepository;
         private readonly IMap _map;
 
-        public RuleBasedAiFactory(IUnitFactory unitFactory, IActorsRepository actorsRepository, IMap map)
+        public RuleBasedAiFactory(UnitFactory unitFactory, IActorsRepository actorsRepository, IMap map)
         {
             _unitFactory = unitFactory;
             _actorsRepository = actorsRepository;
