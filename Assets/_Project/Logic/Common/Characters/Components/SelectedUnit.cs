@@ -1,42 +1,26 @@
 using RH_Modules.Utilities.Attributes;
 using UnityEngine;
-using static UnityEngine.Vector3;
 
 namespace _Project.Logic.Common.Characters.Components
 {
     public class SelectedUnit : MonoBehaviour
     {
-        public bool HasTarget => _target != null;
-        public Vector3 TargetPosition => _target.transform.position;
-        public bool CloseEnoughToAttack => HasTarget 
-                                           && Distance(transform.position, TargetPosition) <= _attackRange;
+        public bool HasTarget => Target != null;
+        public Vector3 TargetPosition => Target.transform.position;
+        public float Distance => Vector3.Distance(Target.transform.position, transform.position);
 
-        [SerializeField, ReadOnly] private Unit _target;
+        [field:SerializeField, ReadOnly] public Unit Target { get; private set; }
         
-        private float _attackRange;
-        private float _damage;
-
-        public void Setup(float attackRange, float damage)
-        {
-            _damage = damage;
-            _attackRange = attackRange;
-        }
-
         public void SetTarget(Unit value)
         {
-            _target = value;
+            Target = value;
             value.Destroyed += Clear;
         }
 
         private void Clear(Unit target)
         {
             target.Destroyed += Clear;
-            _target = null;
+            Target = null;
         }
-
-        public void Attack() => 
-            _target
-                .GetComponent<Health>()
-                .Damage(_damage);
     }
 }
