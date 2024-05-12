@@ -11,7 +11,9 @@ namespace _Project.Logic.Common.Characters.Components
 
         public void Move(Vector3 toTarget, bool instant = false)
         {
-            if (instant) 
+            _navMeshAgent.isStopped = false;
+
+            if (instant)
                 _navMeshAgent.Warp(toTarget);
             else
                 _navMeshAgent.SetDestination(toTarget);
@@ -19,5 +21,8 @@ namespace _Project.Logic.Common.Characters.Components
 
         public bool HasDifferentTarget(Vector3 targetPosition) => 
             _navMeshAgent.destination.ToXY() != targetPosition.ToXY();
+
+        public void Stop() => 
+            _navMeshAgent.isStopped = true;
     }
 }

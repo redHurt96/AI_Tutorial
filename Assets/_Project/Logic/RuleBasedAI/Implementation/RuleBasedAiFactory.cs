@@ -26,12 +26,12 @@ namespace _Project.Logic.RuleBasedAI.Implementation
             Actor actor = new(new MoveToMapTarget(movement, selectedUnit, team, _map),
                 new SelectEnemy(unit.GetComponent<VisibleUnits>(), selectedUnit, team),
                 new FollowEnemy(selectedUnit, movement),
-                new Attack(selectedUnit, unit.GetComponent<IAttackComponent>()),
+                new Attack(selectedUnit, unit.GetComponent<IAttackComponent>(), movement),
                 new Die(unit, unit.GetComponent<Health>()));
             
             _actorsRepository.Add(actor);
 
-            unit.Destroyed += x => _actorsRepository.Remove(actor);
+            unit.Destroyed += _ => _actorsRepository.Remove(actor);
         }
     }
 }

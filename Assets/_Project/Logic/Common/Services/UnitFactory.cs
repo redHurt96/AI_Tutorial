@@ -51,7 +51,7 @@ namespace _Project.Logic.Common.Services
                 .Setup(config.Health);
             unit
                 .GetComponent<IAttackComponent>()
-                .Setup(config.Damage, config.Cooldown, config.Range);
+                .Setup(config.Damage, config.Cooldown, config.Range, team);
             unit
                 .GetComponent<TeamColor>()
                 .Setup(team);

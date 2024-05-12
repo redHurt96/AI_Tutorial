@@ -8,9 +8,11 @@ namespace _Project.Logic.Common.Characters.Components
         public float Range { get; private set; }
 
         private float _damage;
+        private Team _team;
 
-        public void Setup(float damage, float cooldown, float range)
+        public void Setup(float damage, float cooldown, float range, Team team)
         {
+            _team = team;
             Cooldown = cooldown;
             Range = range;
             _damage = damage;

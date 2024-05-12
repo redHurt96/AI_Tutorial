@@ -13,15 +13,18 @@ namespace _Project.Logic.RuleBasedAI.Implementation
         
         private readonly SelectedUnit _selectedUnit;
         private readonly IAttackComponent _attackComponent;
-        
-        public Attack(SelectedUnit selectedUnit, IAttackComponent attackComponent)
+        private readonly Movement _movement;
+
+        public Attack(SelectedUnit selectedUnit, IAttackComponent attackComponent, Movement movement)
         {
             _selectedUnit = selectedUnit;
             _attackComponent = attackComponent;
+            _movement = movement;
         }
 
         public void Action()
         {
+            _movement.Stop();
             _attackComponent.Execute(_selectedUnit.Target);
             _lastAttackTime = time;
         }
