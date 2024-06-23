@@ -1,7 +1,6 @@
 using System.Linq;
-using _Project.Logic.Common.AI;
 
-namespace _Project.Logic.RuleBasedAI
+namespace _Project.Logic.RuleBasedAI.Core
 {
     public class Actor : IActor
     {

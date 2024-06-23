@@ -1,4 +1,4 @@
-namespace _Project.Logic.RuleBasedAI
+namespace _Project.Logic.RuleBasedAI.Core
 {
     public interface IRule
     {
