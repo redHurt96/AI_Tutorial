@@ -1,16 +1,16 @@
 using _Project.Common;
-using _Project.Logic.RuleBasedAI.Core;
+using _Project.RuleBasedAI.Core;
 
 namespace _Project.RuleBasedAI.Implementation
 {
-    public class FindEnemyRule : IRule
+    public class FindEnemy : IRule
     {
         public bool Condition => !_character.HasEnemy && _repository.HasAnyEnemy(_character.Team);
         
-        private readonly CharacterContext _character;
+        private readonly Character _character;
         private readonly CharactersRepository _repository;
 
-        public FindEnemyRule(CharacterContext character, CharactersRepository repository)
+        public FindEnemy(Character character, CharactersRepository repository)
         {
             _character = character;
             _repository = repository;
@@ -18,7 +18,7 @@ namespace _Project.RuleBasedAI.Implementation
 
         public void Action()
         {
-            CharacterContext enemy = _repository.SelectClosest(_character);
+            Character enemy = _repository.SelectClosest(_character);
             _character.SetEnemy(enemy);
         }
     }

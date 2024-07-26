@@ -1,3 +1,17 @@
 {
-	"name": "AiTutorial.Infrastructure"
+    "name": "AiTutorial.Infrastructure",
+    "rootNamespace": "",
+    "references": [
+        "GUID:1b80c0038248e2049a4606ab26bfefa3",
+        "GUID:bd4ad5447ecd93140ad0cab380915f96"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }
