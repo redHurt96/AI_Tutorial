@@ -1,4 +1,7 @@
+using System.Linq;
 using _Project.Common;
+using _Project.Common.Ai;
+using _Project.Common.Characters;
 using _Project.RuleBasedAI.Implementation;
 using UnityEngine;
 using UnityEngine.UI;
@@ -35,11 +38,8 @@ namespace _Project.Infrastructure
 
         private void Update()
         {
-            foreach (IAiBrain brain in _aiRepository.AiBrains)
+            foreach (IAiBrain brain in _aiRepository.AiBrains.ToArray())
                 brain.Update();
-
-            foreach (Character character in _charactersRepository.All)
-                character.Update();
         }
     }
 }

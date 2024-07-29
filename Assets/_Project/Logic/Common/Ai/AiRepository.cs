@@ -1,6 +1,7 @@
 using System.Collections.Generic;
+using _Project.Common.Characters;
 
-namespace _Project.Common
+namespace _Project.Common.Ai
 {
     public class AiRepository
     {
@@ -12,14 +13,10 @@ namespace _Project.Common
         {
             _aiBrainsPerCharacter[character] = aiBrain;
 
-            character.OnDie += Unregister;
+            character.Health.OnDie += () => Unregister(character);
         }
 
-        private void Unregister(Character character)
-        {
-            character.OnDie -= Unregister;
-            
+        private void Unregister(Character character) => 
             _aiBrainsPerCharacter.Remove(character);
-        }
     }
 }

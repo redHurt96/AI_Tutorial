@@ -1,4 +1,4 @@
-namespace _Project.Common
+namespace _Project.Common.Ai
 {
     public interface IAiBrain
     {

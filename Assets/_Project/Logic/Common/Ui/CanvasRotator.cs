@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace _Project.Common
+namespace _Project.Common.Ui
 {
     public class CanvasRotator : MonoBehaviour
     {

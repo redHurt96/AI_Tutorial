@@ -4,22 +4,23 @@ using _Project.RuleBasedAI.Core;
 
 namespace _Project.RuleBasedAI.Implementation
 {
-    public class AttackEnemy : IRule
+    public class FollowEnemyRule : IRule
     {
-        public bool Condition => _selectedTarget.Any 
-                                 && _attack.CloseEnough(_selectedTarget.Value) 
-                                 && !_attack.InCooldown;
+        public bool Condition => _selectedTarget.Value != null 
+                                 && !_attack.CloseEnough(_selectedTarget.Value);
         
+        private readonly Movement _movement;
         private readonly SelectedTarget _selectedTarget;
         private readonly Attack _attack;
 
-        public AttackEnemy(Character character)
+        public FollowEnemyRule(Character character)
         {
+            _movement = character.Movement;
             _selectedTarget = character.SelectedTarget;
             _attack = character.Attack;
         }
 
         public void Action() => 
-            _attack.Execute(_selectedTarget.Value);
+            _movement.MoveTo(_selectedTarget.Value);
     }
 }

@@ -1,6 +1,6 @@
 using System.Linq;
 using _Project.Common;
-using _Project.Logic.RuleBasedAI.Core;
+using _Project.Common.Ai;
 
 namespace _Project.RuleBasedAI.Core
 {

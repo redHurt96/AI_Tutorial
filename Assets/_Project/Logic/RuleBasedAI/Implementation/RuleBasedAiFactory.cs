@@ -1,4 +1,6 @@
 using _Project.Common;
+using _Project.Common.Ai;
+using _Project.Common.Characters;
 using _Project.RuleBasedAI.Core;
 
 namespace _Project.RuleBasedAI.Implementation
@@ -23,9 +25,8 @@ namespace _Project.RuleBasedAI.Implementation
         {
             Character character = _characterFactory.Create(teamId);
             Actor actor = new(new FindEnemy(character, _charactersRepository),
-                new FollowEnemy(character),
-                new AttackEnemy(character),
-                new LostEnemy(character));
+                new FollowEnemyRule(character),
+                new AttackEnemy(character));
             
             _aiRepository.Register(character, actor);
         }
